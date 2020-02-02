@@ -293,9 +293,7 @@ void autonomous(void) {
       driveAuton(560,-560,75,1000);
       wait(10,msec);
       driveAuton(430,430,60,1400);
-
-      TRAY.resetPosition();
-      TRAY.spinToPosition(1300,degrees);
+      trayUp();
       driveAuton(75,75,25,1000);
       wait(20,msec);
 
@@ -328,8 +326,7 @@ void autonomous(void) {
       LB.stop();
       RB.stop();
       RF.stop();
-      TRAY.resetPosition();
-      TRAY.spinToPosition(1300,degrees);
+      trayUp();
       driveAuton(75,75,25,1000);
       wait(20,msec);
 
@@ -366,12 +363,12 @@ void usercontrol(void) {
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
+
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
   // Run the pre-autonomous function.
   pre_auton();
-
   // Prevent main from exiting with an infinite loop.
   while (true) {
 

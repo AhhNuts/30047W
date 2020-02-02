@@ -13,6 +13,7 @@ Button y;
 //IMPORTANT FACT: We are using VisionA as the parent of VISIONB which means that we are 
 //                overiding what visionB sees if visionA sees a block
 
+
 //return largest width index of the three values 
 int largestWidthIndex(int num1, int num2, int num3){
   int largestIndex = 0; 
@@ -64,13 +65,13 @@ int calculateSpeed(int index){
     case -1:
       return 0;
     case 0:
-      visionSnapShot(0);
+      visionSnapShot(0); //take orange snapshot
       break;
     case 1:
-      visionSnapShot(1);
+      visionSnapShot(1); //take green snapshot
       break;
     case 2:
-      visionSnapShot(2);
+      visionSnapShot(2); //take purple snapshot
       break;
   }
   /*
@@ -82,8 +83,8 @@ int calculateSpeed(int index){
   //https://docs.google.com/spreadsheets/d/1rPjnKj7dXVsCu5H4uYK2RXnXCAtPgEzE6dF_SBjQB_Q/edit?usp=sharing
 
   if(VISIONA.objectCount > 0){ 
-    visionPid.setTarget(-114);
-    visionPid.pidCalculate( VISIONA.largestObject.centerY - VISIONA.largestObject.centerX); //1.05
+    visionPid.setTarget(-114); 
+    visionPid.pidCalculate( VISIONA.largestObject.centerY - VISIONA.largestObject.centerX); 
 
   }else if(VISIONB.objectCount > 0){
     visionPid.setTarget(202);
@@ -94,11 +95,12 @@ int calculateSpeed(int index){
 
 
 int visionSpeed(){ 
-  if(y.isPress(Controller1.ButtonY.pressing(),false)){ //Only happens once to find the biggest index and 
-    indexLarg = largestWidthIndex(widthOfBlock(0), widthOfBlock(1), widthOfBlock(2));
+  if(y.isPress(Controller1.ButtonY.pressing(),false)){ //Only happens once
+    indexLarg = largestWidthIndex(widthOfBlock(0), widthOfBlock(1), widthOfBlock(2)); //Get the biggest width of each color block 
+                                                                                      //then find the largest width index 
   }
   if(Controller1.ButtonY.pressing()){
-    return calculateSpeed(indexLarg);
+    return calculateSpeed(indexLarg); 
   }else{
     return 0;
   }
