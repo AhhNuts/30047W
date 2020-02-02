@@ -27,10 +27,10 @@ signature VISIONB__SIG_7 = signature (7, 0, 0, 0, 0, 0, 0, 3, 0);
 vision VISIONB = vision (PORT5, 50, VISIONB__VISIONB_ORANGE, VISIONB__VISIONB_GREEN, VISIONB__VISIONB_PURPLE, VISIONB__SIG_4, VISIONB__SIG_5, VISIONB__SIG_6, VISIONB__SIG_7);
 /*vex-vision-config:end*/
 /*vex-vision-config:begin*/
-signature VISIONA__VISIONA_ORANGE = signature (1, 8821, 9387, 9104, -1667, -1309, -1488, 3.1, 0);
-signature VISIONA__VISIONA_GREEN = signature (2, -8093, -3949, -6022, -1531, 1271, -130, 2.1, 0);
-signature VISIONA__VISIONA_PURPLE = signature (3, 1945, 2601, 2274, 8455, 11703, 10078, 4.1, 0);
-vision VISIONA = vision (PORT7, 48, VISIONA__VISIONA_ORANGE, VISIONA__VISIONA_GREEN, VISIONA__VISIONA_PURPLE);
+signature VISIONA__VISIONA_ORANGE = signature (1, 8821, 9387, 9104, -1667, -1309, -1488, 3, 0);
+signature VISIONA__VISIONA_GREEN = signature (2, -8093, -3949, -6022, -1531, 1271, -130, 1.4, 0);
+signature VISIONA__VISIONA_PURPLE = signature (3, 1945, 2601, 2274, 8455, 11703, 10078, 3.3, 0);
+vision VISIONA = vision (PORT7, 46, VISIONA__VISIONA_ORANGE, VISIONA__VISIONA_GREEN, VISIONA__VISIONA_PURPLE);
 /*vex-vision-config:end*/
 
 // VEXcode generated functions
