@@ -286,10 +286,10 @@ void autonomous(void) {
 
       SUCTION1.spin(reverse,75,pct);
       SUCTION2.spin(reverse,75,pct);
-
       wait(225,msec);
       SUCTION1.stop();
       SUCTION2.stop();
+
       driveAuton(560,-560,75,1000);
       wait(10,msec);
       driveAuton(430,430,60,1400);
@@ -300,8 +300,8 @@ void autonomous(void) {
       SUCTION1.spin(forward,100,pct);
       SUCTION2.spin(forward,100,pct);
 
-      driveAuton(-600,-600,100,3000);
-
+      driveAuton(-600,-600,100,2000);
+      
       SUCTION1.stop();
       SUCTION2.stop();
       break;
