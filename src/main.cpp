@@ -38,7 +38,7 @@ competition Competition;
 // define your global instances of motors and other devices here
 
 bool exitAuton = false;;
-int auton = -1; //-1 is default for nothin
+int auton = 6; //-1 is default for nothin
 
 //x, y, textX, textY, title, color, width , height
 GuiButton button[]{
@@ -274,34 +274,35 @@ void autonomous(void) {
   switch(auton){
     case -1:
       break;
-    case 1:        
-      SUCTION1.spin(forward,100,pct);
+    case 1:      
+      //CONSIST MOST OF TIME in tournment 7/8 times 
+
+      SUCTION1.spin(forward,100,pct); //Start Intaking
       SUCTION2.spin(forward,100,pct);
-      driveAuton(1200,1200,30,2500);
-      wait(250,msec);
+      driveAuton(1200,1200,30,2500); //drives forward 
+      wait(250,msec);   //wait a few
       SUCTION1.stop();
-      SUCTION2.stop();
+      SUCTION2.stop();  
 
-      driveAuton(-800,-800,45,1900);
+      driveAuton(-800,-800,45,1900); //drive back 
 
-      SUCTION1.spin(reverse,75,pct);
+      SUCTION1.spin(reverse,75,pct); //outake a little
       SUCTION2.spin(reverse,75,pct);
-      wait(225,msec);
+      wait(225,msec); 
       SUCTION1.stop();
       SUCTION2.stop();
 
-      driveAuton(560,-560,75,1000);
+      driveAuton(560,-560,75,1000); //turn to face corner
       wait(10,msec);
-      driveAuton(430,430,60,1400);
-      trayUp();
-      driveAuton(75,75,25,1000);
+      driveAuton(430,430,60,1400);  //drive to corner
+      trayUp(); //Change SpinToPosition to my own function to have faster tray going up 
+      driveAuton(75,75,25,1000);  //move forward just a little
       wait(20,msec);
 
-      SUCTION1.spin(forward,100,pct);
+      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal 
       SUCTION2.spin(forward,100,pct);
 
-      driveAuton(-600,-600,100,2000);
-      
+      driveAuton(-600,-600,100,2000); //drive back 
       SUCTION1.stop();
       SUCTION2.stop();
       break;
@@ -342,6 +343,28 @@ void autonomous(void) {
       RB.stop();
       RF.stop();
       break;
+    case 6:
+      //SUCTION1.spin(forward,100,pct);
+      //SUCTION2.spin(forward,100,pct);
+      //driveAuton(800,800,60,2000);
+
+      driveAuton(-270,270,100,2500); 
+
+     /* driveAuton(1200,1200,50,4500);
+      wait(225,msec);
+      SUCTION1.stop();
+      SUCTION2.stop();
+      driveAuton(-1200,-1200, 50, 4500);
+
+      driveAuton(-435,435,75, 4000);
+      driveAuton(100,100, 50, 1500);
+      trayUp();
+      driveAuton(75,75,25,500);
+      driveAuton(-100,-100,25,500);  */
+
+      break;
+ 
+ 
   }
 }
 
