@@ -1,7 +1,7 @@
 #ifndef GUI_H_
 #define GUI_H_
 
-
+//Use for easier managing every button 
 struct GuiButton{
   int x;
   int y;

@@ -8,7 +8,7 @@ void tray(){
     if(Controller1.ButtonDown.pressing()){
       TRAY.resetPosition();
     }
-    else if(Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing()){
+    else if(Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing()){ //Tray Lift Faster Down
       TRAY.spin(reverse,100,pct);
     }
     else if(Controller1.ButtonR1.pressing()){ //Button to hold to go up fast then depending on the position
@@ -24,7 +24,8 @@ void tray(){
     else if(Controller1.ButtonR2.pressing()){ //Button R2 to go down slow
       TRAY.spin(reverse,50,pct);
     }else if (TRAY.rotation(deg) < 350){
-      TRAY.stop(coast); //Going against the metal when hold so we caost so motor won't overheat
+      TRAY.stop(coast); //Going against the rubber banding causing motor to overheat significantly changing it to coast at that 
+                        //position helped the problem
     }else{
       TRAY.stop(hold);
     }

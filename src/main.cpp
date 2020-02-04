@@ -41,6 +41,7 @@ bool exitAuton = false;;
 int auton = 6; //-1 is default for nothin
 
 //x, y, textX, textY, title, color, width , height
+//char* is there to remove warning
 GuiButton button[]{
   //MENU 0
   {57,50,35,50,(char*)"Red",color(255,0,0),100,100}, //RED BUTTON
@@ -83,9 +84,13 @@ GuiButton button[]{
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  bool screenHold = false;
-  bool menuChange = true;
-  int menu = 0;
+
+  bool screenHold = false; //Want a hold so when you click on the Screen It won't press the next menu screen as well making it 
+                           //impossible to click on wha tthe user wants
+
+  bool menuChange = true; //allow of menuChange
+  int menu = 0; //set the menu state 
+
   while(!exitAuton){
     if(menuChange){
       Brain.Screen.clearScreen();
@@ -104,7 +109,7 @@ void pre_auton(void) {
           }
           if(auton == 9){
             make_button(button[6]);
-            Brain.Screen.printAt(30,200,"YOU PICKED SKILL       ");
+            Brain.Screen.printAt(30,200,"YOU PICKED SKILL       "); //Spaces are there to delete the previous text instead of just clear line
           }
           break;
         case 1: //RED
@@ -160,9 +165,10 @@ void pre_auton(void) {
       } 
       menuChange = false;
     }
+    //If the Screen is not pressing, dont do anything: This helps with constantly checking 
     while(!menuChange && !Brain.Screen.pressing()){
       wait(50,msec);
-      screenHold = false;
+      screenHold = false; 
     }
     while(!menuChange && Brain.Screen.pressing() && !screenHold){
       switch(menu){
@@ -299,42 +305,38 @@ void autonomous(void) {
       driveAuton(75,75,25,1000);  //move forward just a little
       wait(20,msec);
 
-      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal 
+      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and drive back 
       SUCTION2.spin(forward,100,pct);
+      driveAuton(-600,-600,100,2000); 
 
-      driveAuton(-600,-600,100,2000); //drive back 
       SUCTION1.stop();
       SUCTION2.stop();
       break;
     case 5:
-      SUCTION1.spin(forward,100,pct);
+      //Same as case 1 but in the blue side 
+      SUCTION1.spin(forward,100,pct); //Start Intake
       SUCTION2.spin(forward,100,pct);
 
-      driveAuton(1200,1200,30,2500);
+      driveAuton(1200,1200,30,2500); //Drive Forward set distance
       wait(250,msec);
-      SUCTION1.stop();
+      SUCTION1.stop(); //stop Intake
       SUCTION2.stop();
-      driveAuton(-800,-800,45,1900);
-      SUCTION1.spin(reverse,75,pct);
+      driveAuton(-800,-800,45,1900); //Drive Back set distance
+      SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
       SUCTION2.spin(reverse,75,pct);
       wait(225,msec);
       SUCTION1.stop();
       SUCTION2.stop();
-      driveAuton(-560,560,75,1000);
+      driveAuton(-560,560,75,1000);   //Only difference from case 1 is that turning is opposite 
       wait(10,msec);
-      driveAuton(430,430,60,1400);
-      LF.stop();
-      LB.stop();
-      RB.stop();
-      RF.stop();
+      driveAuton(430,430,60,1400); //Drive Forward to Goal
       trayUp();
-      driveAuton(75,75,25,1000);
+      driveAuton(75,75,25,1000); //Move forward
       wait(20,msec);
 
-      SUCTION1.spin(forward,100,pct);
-      SUCTION2.spin(forward,100,pct);
-
-      driveAuton(-600,-600,100,3000);
+      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
+      SUCTION2.spin(forward,100,pct); 
+      driveAuton(-600,-600,100,3000); 
 
       SUCTION1.stop();
       SUCTION2.stop();
@@ -370,8 +372,8 @@ void autonomous(void) {
 
 void usercontrol(void) {
   Brain.Screen.clearScreen();
-  task informationTask = task(information);
-  TRAY.resetPosition();
+  task informationTask = task(information); //Starts its own thread to calculate information to Controller every 2 seconds
+  TRAY.resetPosition(); 
   while (true) {
     drive();  
     suction();

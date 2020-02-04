@@ -26,7 +26,7 @@ void driveAuton(int targetL, int targetR, int maxSpeed, int timeout){
      PID rightD(0.07,0,0.1);
   }
   timeD.clear();
-  while(!(timeD.time() >= timeout)){
+  while(!(timeD.time() >= timeout)){ 
     leftD.pidCalculate( ( LF.rotation(deg) + LB.rotation(deg) ) / 2);
     rightD.pidCalculate( (RF.rotation(deg) + RB.rotation(deg) ) / 2);
 
@@ -41,19 +41,21 @@ void driveAuton(int targetL, int targetR, int maxSpeed, int timeout){
     LB.spin(forward, leftD.getSpeed(), pct);
     RF.spin(forward, rightD.getSpeed(), pct);
     RB.spin(forward, rightD.getSpeed(), pct); 
-    std::cout << rightD.getSpeed() << std::endl;
   }
+  // (2/3/20) Added Stop b/c realize that the motor was still spinning after the time was out.
+  //Ideally this shouldn't happen and I should increase the timeout to make sure it reaches the distance 
+  //but its a precaution if it doesn't reach
   LF.stop();
   LB.stop();
   RF.stop();
   RB.stop();
 }
-void trayUp(){
+void trayUp(){ //automatic tray up starts fast and slows down fast
   TRAY.resetRotation();
   timeD.clear();
-  while(!(timeD.time() >= 5000)){
+  while(!(timeD.time() >= 5000)){ //Ideally it should take 5 secs 
     if(TRAY.position(deg) > 1000){   
-      TRAY.spin(forward,30,pct);
+      TRAY.spin(forward,30,pct); 
     }
     else if(TRAY.position(deg) > 600){
       TRAY.spin(forward,60,pct);
@@ -65,6 +67,7 @@ void trayUp(){
       break;
     }
   }
+  TRAY.stop(hold); 
 }
 
 

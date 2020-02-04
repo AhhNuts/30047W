@@ -19,9 +19,9 @@ void update(){
   //Update LY and RX values from controller
   LY = Controller1.Axis3.position(percent); 
   RX = Controller1.Axis1.position(percent); 
-  
+  //Changes Speed of the Motor giving driver more precision controls
   if(Controller1.ButtonX.pressing()){
-    maxSpeed = 100;
+    maxSpeed = 100; 
   }else if(Controller1.ButtonA.pressing()){
     maxSpeed = 50;
   }else if(Controller1.ButtonB.pressing()){

@@ -2,20 +2,29 @@
 #include "suction.h"
 #include "button.h"
 Button down;
-int reverseS = 1;;
-void suction(){
+void suction(){ 
+
+  /* *REMOVED* Found that it was more intuitive to use left and right instead of down and the down can be used for the tray
   if(down.isPress(Controller1.ButtonDown.pressing(), true)){
     reverseS = -1;
   }else{
     reverseS = 1;
-  }
+  }  *REMOVED*  */
 
-  if(Controller1.ButtonL1.pressing()){
-    SUCTION1.spin(forward,100 * reverseS,pct);
+  if(Controller1.ButtonL1.pressing()){ //Intakes
+    SUCTION1.spin(forward,100,pct);
     SUCTION2.spin(forward,100,pct);
   }
-  else if(Controller1.ButtonL2.pressing()){
-    SUCTION1.spin(reverse,100 * reverseS,pct);
+  else if(Controller1.ButtonL2.pressing()){ //Outakes
+    SUCTION1.spin(reverse,100,pct);
+    SUCTION2.spin(reverse,100,pct);
+  }
+  else if(Controller1.ButtonLeft.pressing()){ //Intake moves Counter-ClockWise to the point of view of robot
+    SUCTION1.spin(reverse,100,pct);
+    SUCTION2.spin(forward,100,pct);
+  }
+  else if(Controller1.ButtonRight.pressing()){ //Intake moves ClockWise to the point of view of robot
+    SUCTION1.spin(forward,100,pct);
     SUCTION2.spin(reverse,100,pct);
   }
   else{
@@ -23,12 +32,4 @@ void suction(){
      SUCTION2.stop(hold);
   }
 
-}
-void informationS(){
-  Controller1.Screen.setCursor(2,13);
-  if(reverseS == -1){ //if it negative then state to controller true
-    Controller1.Screen.print("True  ");
-  }else{
-    Controller1.Screen.print("False  ");
-  }
 }
