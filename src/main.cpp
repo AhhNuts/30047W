@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       VEX                                                       */
+/*    Author:       Calvin Tran                                               */
 /*    Created:      Thu Sep 26 2019                                           */
 /*    Description:  Competition Template                                      */
 /*                                                                            */
@@ -280,7 +280,10 @@ void autonomous(void) {
   switch(auton){
     case -1:
       break;
-    case 1:      
+    case 1:     
+    /*---------------------------------------------------------------------------*/
+    /*                         RED SIDE (Not Protected)                          */
+    /*---------------------------------------------------------------------------*/                                                                           
       //CONSIST MOST OF TIME in tournment 7/8 times 
 
       SUCTION1.spin(forward,100,pct); //Start Intaking
@@ -313,6 +316,9 @@ void autonomous(void) {
       SUCTION2.stop();
       break;
     case 5:
+    /*---------------------------------------------------------------------------*/
+    /*                         BLUE SIDE (Not Protected)                          */
+    /*---------------------------------------------------------------------------*/   
       //Same as case 1 but in the blue side 
       SUCTION1.spin(forward,100,pct); //Start Intake
       SUCTION2.spin(forward,100,pct);
@@ -336,7 +342,7 @@ void autonomous(void) {
 
       SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
       SUCTION2.spin(forward,100,pct); 
-      driveAuton(-600,-600,100,3000); 
+      driveAuton(-600,-600,50,3000); 
 
       SUCTION1.stop();
       SUCTION2.stop();
@@ -346,24 +352,40 @@ void autonomous(void) {
       RF.stop();
       break;
     case 6:
-      //SUCTION1.spin(forward,100,pct);
-      //SUCTION2.spin(forward,100,pct);
-      //driveAuton(800,800,60,2000);
-
-      driveAuton(-270,270,100,2500); 
-
-     /* driveAuton(1200,1200,50,4500);
+      /*---------------------------------------------------------------------------*/
+      /*                         BlUE SIDE (Protected)                             */
+      /*---------------------------------------------------------------------------*/   
+      SUCTION1.spin(forward,100,pct);
+      SUCTION2.spin(forward,100,pct);
+      driveAuton(528,528,40,2000); //480 without head since center of mass change for turning
+      wait(300,msec);
+      driveAuton(-271,271,50,1500); 
+      wait(100,msec);
+      driveAuton(1150,1150,35,3000);
       wait(225,msec);
       SUCTION1.stop();
+      SUCTION2.stop(); 
+      driveAuton(-1150,-1150, 75, 2500);
+      SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
+      SUCTION2.spin(reverse,75,pct);
+      wait(400,msec);
+      SUCTION1.stop();
       SUCTION2.stop();
-      driveAuton(-1200,-1200, 50, 4500);
+      driveAuton(-360,360,50, 2000); //360 without head since center of mass change for turning
+      driveAuton(500,500, 50, 1500);
 
-      driveAuton(-435,435,75, 4000);
-      driveAuton(100,100, 50, 1500);
       trayUp();
-      driveAuton(75,75,25,500);
-      driveAuton(-100,-100,25,500);  */
+      driveAuton(100,100,25,1000);
+      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
+      SUCTION2.spin(forward,100,pct); 
+      driveAuton(-600,-600,50,3000); 
 
+      SUCTION1.stop();
+      SUCTION2.stop();
+      LF.stop();
+      LB.stop();
+      RB.stop();
+      RF.stop();
       break;
  
  

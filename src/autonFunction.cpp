@@ -3,8 +3,8 @@
 #include "pid.h"
 #include <iostream>
 
-PID leftD(0.07,0,0.1);
-PID rightD(0.07,0,0.1);
+PID leftD;
+PID rightD;
 vex::timer timeD;
 vex::timer timeT;
 vex::timer timeS;
@@ -18,12 +18,12 @@ void driveAuton(int targetL, int targetR, int maxSpeed, int timeout){
   leftD.setMaxSpeed(maxSpeed);
   rightD.setMaxSpeed(maxSpeed);
   // (2/3/20) Realize that P was too low when turning so added this condition to change P whenever its turning
-  if( (targetL > 0 && targetR < 0 )|| (targetL < 0 && targetR > 0)){ //Condition for turning auton to change PID
-    leftD.setPID(0.3,0,0.1);
-    PID rightD(0.3,0,0.1);
+  if( (targetL > 0 && targetR < 0 ) || (targetL < 0 && targetR > 0)){ //Condition for turning auton to change PID
+    leftD.setPID(0.2,0,0.13);
+    rightD.setPID(0.2,0,0.13);
   }else{
-     leftD.setPID(0.07,0,0.1);
-     PID rightD(0.07,0,0.1);
+     leftD.setPID(0.16,0,0.1);
+     rightD.setPID(0.16,0,0.1);
   }
   timeD.clear();
   while(!(timeD.time() >= timeout)){ 
@@ -52,6 +52,7 @@ void driveAuton(int targetL, int targetR, int maxSpeed, int timeout){
 }
 void trayUp(){ //automatic tray up starts fast and slows down fast
   TRAY.resetRotation();
+  TRAY.setPosition(0,deg);
   timeD.clear();
   while(!(timeD.time() >= 5000)){ //Ideally it should take 5 secs 
     if(TRAY.position(deg) > 1000){   
@@ -62,6 +63,7 @@ void trayUp(){ //automatic tray up starts fast and slows down fast
     }else{
       TRAY.spin(forward,100,pct); 
     }
+
     if(TRAY.position(deg) > 1400){
       TRAY.stop(hold);
       break;

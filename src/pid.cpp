@@ -36,7 +36,7 @@ void PID::pidCalculate(double actual) {
   derivative = error - previous_error;
   previous_error = error; 
 
-  if(fabs(error) < 2){
+  if(fabs(error) < 10){
     speed = 0;
   }else{
     speed = kP * error + kI * integral + kD * derivative;
