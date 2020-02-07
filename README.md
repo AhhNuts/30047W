@@ -16,6 +16,8 @@ The 30047G code for the Berkmar Vex team. It is developed and efficent for a sim
    VISIONB              vision           5               
    VISIONA              vision           7         
 ```
+## Game Strategy 
+- 
 ## Autonomous
 * Protected Side 
   - The robot to drive straight and turn 90 degrees to collect and stack a total of four blocks within the protective zone. 
