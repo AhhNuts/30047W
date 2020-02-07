@@ -1,10 +1,8 @@
 # 30047G
 
-The 30047G code includes an Autonomous Selecter that allows the User to select which autonomous routine they would prefer to use. The first routine, on the unprotected side, wires the robot to drive straight 
-and collect four blocks- not including the preload (total five blocks)- and be able to go back to the goal zone and stack the blocks. The second routine, on the protected side, wirtes the robot to drive straight
-and turn 90 degrees collecting more blocks. So, in total 4 blocks on the protected side.
+The 30047G code includes an Autonomous Selecter that allows the User to select which autonomous routine they would prefer to use. The first routine, on the unprotected side, wires the robot to drive straight and collect four blocks- not including the preload (total five blocks)- and be able to go back to the goal zone and stack the blocks. The second routine allows the robot to drive straight and turn 90 degrees to collect and stack a total of five blocks within the protective zone. 
 
-## Game Stat
+## Problems
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
