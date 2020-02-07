@@ -354,34 +354,30 @@ void autonomous(void) {
     case 6:
       /*---------------------------------------------------------------------------*/
       /*                         BlUE SIDE (Protected)                             */
-      /*---------------------------------------------------------------------------*/   
+      /*---------------------------------------------------------------------------*/  
+      Controller1.Screen.print("Im running BLUE");
       SUCTION1.spin(forward,100,pct);
       SUCTION2.spin(forward,100,pct);
-      driveAuton(528,528,40,2000); //480 without head since center of mass change for turning
-      wait(300,msec);
+      driveAuton(2000,2000,40,4000); //480 without head since center of mass change for turning
+      driveAuton(2000,2000,40,4000);
+      wait(500,msec);
       driveAuton(-271,271,50,1500); 
       wait(100,msec);
-      driveAuton(1150,1150,35,3000);
-      wait(225,msec);
+      driveAuton(1050,1050,35,3000);
+      wait(200,msec);
+      driveAuton(-1200,-1200, 75, 2500);
       SUCTION1.stop();
       SUCTION2.stop(); 
-      driveAuton(-1150,-1150, 75, 2500);
+      wait(100,msec);
       SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
       SUCTION2.spin(reverse,75,pct);
       wait(400,msec);
       SUCTION1.stop();
       SUCTION2.stop();
-      driveAuton(-360,360,50, 2000); //360 without head since center of mass change for turning
-      driveAuton(500,500, 50, 1500);
-
+      driveAuton(-400,400,50, 2000); //360 without head since center of mass change for turning
+      driveAuton(100,100, 30, 1500);
       trayUp();
-      driveAuton(100,100,25,1000);
-      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
-      SUCTION2.spin(forward,100,pct); 
-      driveAuton(-600,-600,50,3000); 
-
-      SUCTION1.stop();
-      SUCTION2.stop();
+      driveAuton(75,75,25,2000);
       LF.stop();
       LB.stop();
       RB.stop();

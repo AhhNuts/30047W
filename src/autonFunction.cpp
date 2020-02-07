@@ -35,6 +35,7 @@ void driveAuton(int targetL, int targetR, int maxSpeed, int timeout){
       LB.stop();
       RF.stop();
       RB.stop();
+      wait(25,msec); //To stablize
       break;
     }
     LF.spin(forward, leftD.getSpeed(), pct);

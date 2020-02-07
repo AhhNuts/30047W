@@ -18,7 +18,7 @@ unsigned short deadzone = 2; //is area that still of the controller stick
 void update(){
   //Update LY and RX values from controller
   LY = Controller1.Axis3.position(percent); 
-  RX = Controller1.Axis1.position(percent); 
+  RX = Controller1.Axis1.position(percent) *.6;
   //Changes Speed of the Motor giving driver more precision controls
   if(Controller1.ButtonX.pressing()){
     maxSpeed = 100; 

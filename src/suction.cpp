@@ -26,6 +26,9 @@ void suction(){
   else if(Controller1.ButtonRight.pressing()){ //Intake moves ClockWise to the point of view of robot
     SUCTION1.spin(forward,100,pct);
     SUCTION2.spin(reverse,100,pct);
+  }else if(Controller1.ButtonUp.pressing()){ //outtake slower
+    SUCTION1.spin(reverse,40,pct);
+    SUCTION2.spin(reverse,40,pct);
   }
   else{
      SUCTION1.stop(hold);

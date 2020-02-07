@@ -9,14 +9,14 @@ void tray(){
       TRAY.resetPosition();
     }
     else if(Controller1.ButtonR1.pressing() && Controller1.ButtonR2.pressing()){ //Tray Lift Faster Down
-      TRAY.spin(reverse,100,pct);
+      TRAY.spin(reverse,90,pct);
     }
     else if(Controller1.ButtonR1.pressing()){ //Button to hold to go up fast then depending on the position
       if(TRAY.position(deg) > 1000){           //it will go slower (Semi-Automatic)
         TRAY.spin(forward,30,pct);
       }
       else if(TRAY.position(deg) > 600){
-        TRAY.spin(forward,60,pct);
+        TRAY.spin(forward,50,pct);
       }else{
         TRAY.spin(forward,100,pct); 
       }
