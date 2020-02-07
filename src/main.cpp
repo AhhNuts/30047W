@@ -38,7 +38,7 @@ competition Competition;
 // define your global instances of motors and other devices here
 
 bool exitAuton = false;;
-int auton = 6; //-1 is default for nothin
+int auton = 1; //-1 is default for nothin
 
 //x, y, textX, textY, title, color, width , height
 //char* is there to remove warning
@@ -285,35 +285,7 @@ void autonomous(void) {
     /*                         RED SIDE (Not Protected)                          */
     /*---------------------------------------------------------------------------*/                                                                           
       //CONSIST MOST OF TIME in tournment 7/8 times 
-
-      SUCTION1.spin(forward,100,pct); //Start Intaking
-      SUCTION2.spin(forward,100,pct);
-      driveAuton(1200,1200,30,2500); //drives forward 
-      wait(250,msec);   //wait a few
-      SUCTION1.stop();
-      SUCTION2.stop();  
-
-      driveAuton(-800,-800,45,1900); //drive back 
-
-      SUCTION1.spin(reverse,75,pct); //outake a little
-      SUCTION2.spin(reverse,75,pct);
-      wait(225,msec); 
-      SUCTION1.stop();
-      SUCTION2.stop();
-
-      driveAuton(560,-560,75,1000); //turn to face corner
-      wait(10,msec);
-      driveAuton(430,430,60,1400);  //drive to corner
-      trayUp(); //Change SpinToPosition to my own function to have faster tray going up 
-      driveAuton(75,75,25,1000);  //move forward just a little
-      wait(20,msec);
-
-      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and drive back 
-      SUCTION2.spin(forward,100,pct);
-      driveAuton(-600,-600,100,2000); 
-
-      SUCTION1.stop();
-      SUCTION2.stop();
+      notProtected(false);
       break;
     case 5:
     /*---------------------------------------------------------------------------*/
@@ -355,29 +327,35 @@ void autonomous(void) {
       /*---------------------------------------------------------------------------*/
       /*                         BlUE SIDE (Protected)                             */
       /*---------------------------------------------------------------------------*/  
-      Controller1.Screen.print("Im running BLUE");
       SUCTION1.spin(forward,100,pct);
       SUCTION2.spin(forward,100,pct);
-      driveAuton(2000,2000,40,4000); //480 without head since center of mass change for turning
-      driveAuton(2000,2000,40,4000);
-      wait(500,msec);
-      driveAuton(-271,271,50,1500); 
+      driveAuton(650,650,40,4000); //480 without head since center of mass change for turning
+      wait(350,msec);
+      driveAuton(-270,270,50,1500); 
       wait(100,msec);
-      driveAuton(1050,1050,35,3000);
+      driveAuton(1075,1075,35,3500);
       wait(200,msec);
-      driveAuton(-1200,-1200, 75, 2500);
+      SUCTION1.spin(forward,20,pct);
+      SUCTION2.spin(forward,20,pct);
+      driveAuton(-1100,-1100, 75, 2500);
       SUCTION1.stop();
       SUCTION2.stop(); 
       wait(100,msec);
       SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
       SUCTION2.spin(reverse,75,pct);
-      wait(400,msec);
+      wait(350,msec);
       SUCTION1.stop();
       SUCTION2.stop();
-      driveAuton(-400,400,50, 2000); //360 without head since center of mass change for turning
-      driveAuton(100,100, 30, 1500);
+      driveAuton(-350,350,50, 2000); //360 without head since center of mass change for turning
+      driveAuton(200,200, 40, 2000);
       trayUp();
       driveAuton(75,75,25,2000);
+
+      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
+      SUCTION2.spin(forward,100,pct); 
+      driveAuton(-600,-600,50,2000); 
+      SUCTION1.stop();
+      SUCTION2.stop();
       LF.stop();
       LB.stop();
       RB.stop();
