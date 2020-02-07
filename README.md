@@ -17,13 +17,14 @@ The 30047G code for the Berkmar Vex team. It is developed and efficent for a sim
    VISIONA              vision           7         
 ```
 ## Game Strategy 
-- 
+- Make sure the autonomous routine stacks the cubes then decide if the robot should be defensive or offensive depending on the sitation   of the other team(s). The team wants to focus on putting cubes on towers after stacking. The team should be aware of our teammates       situaton and help them if needed. We want to be a team that can play offensive, but also be a support if needed. 
+## Pre-Auton 
+* Simple GUI Faced interface: First with selecting team color then what auton routine to run.
 ## Autonomous
 * Protected Side 
   - The robot to drive straight and turn 90 degrees to collect and stack a total of four blocks within the protective zone. 
 * Unprotected Side
   - The program wires the robot to drive straight and collect four blocks- not including the preload (total five blocks)- and be able to go back to the goal zone and stack the blocks.
-  
 ## Classes
 * PID class
    - Useful to have for calculating the speed based on on the motor rotation so the robot can reach its target destination.
@@ -35,7 +36,7 @@ The 30047G code for the Berkmar Vex team. It is developed and efficent for a sim
 * Drive Control
   - Uses Arcade Control
 * Button Y
-  - Uses Vision Sensor
+  - Uses Vision Sensor to center cubes
 * Button X,A,B 
   - Changes the maxspeed of drive x - resets to 100 ; A - 50 ; B - 25
 * Button Down
