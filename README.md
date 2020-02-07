@@ -1,56 +1,44 @@
 # 30047G
 
-The 30047G code includes an Autonomous Selecter that allows the User to select which autonomous routine they would prefer to use. The first routine, on the unprotected side, wires the robot to drive straight and collect four blocks- not including the preload (total five blocks)- and be able to go back to the goal zone and stack the blocks. The second routine allows the robot to drive straight and turn 90 degrees to collect and stack a total of five blocks within the protective zone. 
+The 30047G code 
 
-## Problems
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
+## Robot Configuration 
+```c++
+   [Name]               [Type]        [Port(s)]
+   LF                   motor            8               
+   LB                   motor            9               
+   RF                   motor            3               
+   RB                   motor            2                
+   Controller1          controller                    
+   SUCTION1             motor           10               
+   SUCTION2             motor            1               
+   TRAY                 motor            4                
+   VISIONB              vision           5               
+   VISIONA              vision           7         
 ```
-Give examples
-```
+## Autonomous
+* Protected Side 
+  - The robot to drive straight and turn 90 degrees to collect and stack a total of four blocks within the protective zone. 
+* Unprotected Side
+  - The program wires the robot to drive straight and collect four blocks- not including the preload (total five blocks)- and be able to go back to the goal zone and stack the blocks.
+## Classes
+* PID class
+* Button Class
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+## Drive Controls 
+* Tray
+  - Semi-automatic tray-control that decreases the speed in respect to the increase in position
+* Drive Control
+  - Uses Arcade Control
+* Button Y
+  - Uses Vision Sensor
+* Button X,A,B 
+  - Changes the maxspeed of drive x - resets to 100 ; A - 50 ; B - 25
+* Button 
+## Future Plans
+* Add the use of vision sensor to autonomous routine
+* Create a useful skill routine
+* Add new autonomous routine for a seven block stack on protected side 
 
 ## Built With
 
