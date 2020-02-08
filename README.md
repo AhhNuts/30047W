@@ -54,8 +54,6 @@ The 30047W code for the Berkmar Vex team. It is developed and efficent for a sim
 
 * **Calvin Tran** - Head Programmer - [AhhNuts](https://github.com/AhhNuts)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
