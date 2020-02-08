@@ -279,7 +279,6 @@ void autonomous(void) {
   exitAuton = true;
   switch(auton){
     case -1:
-      arcAuton();
       break;
     case 1:     
     /*---------------------------------------------------------------------------*/
