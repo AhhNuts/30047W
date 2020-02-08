@@ -23,10 +23,14 @@ void tray(){
     }
     else if(Controller1.ButtonR2.pressing()){ //Button R2 to go down slow
       TRAY.spin(reverse,50,pct);
-    }else if (TRAY.rotation(deg) < 350){
+    }
+    else if (TRAY.rotation(deg) < 350){
       TRAY.stop(coast); //Going against the rubber banding causing motor to overheat significantly changing it to coast at that 
-                        //position helped the problem
-    }else{
+                        //position helped the proble
+    }
+    else if(TRAY.rotation(deg) < -3){
+      TRAY.resetPosition(); //Solve issue with going to fast because the motor position goes negative
+    }else{ 
       TRAY.stop(hold);
     }
 }

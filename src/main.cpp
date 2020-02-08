@@ -38,7 +38,7 @@ competition Competition;
 // define your global instances of motors and other devices here
 
 bool exitAuton = false;;
-int auton = 1; //-1 is default for nothin
+int auton = -1; //-1 is default for nothin
 
 //x, y, textX, textY, title, color, width , height
 //char* is there to remove warning
@@ -279,89 +279,34 @@ void autonomous(void) {
   exitAuton = true;
   switch(auton){
     case -1:
+      arcAuton();
       break;
     case 1:     
     /*---------------------------------------------------------------------------*/
     /*                         RED SIDE (Not Protected)                          */
     /*---------------------------------------------------------------------------*/                                                                           
-      //CONSIST MOST OF TIME in tournment 7/8 times 
-      notProtected(false);
+      //CONSIST MOST OF TIME in tournment 
+      notProtectedAuton(false);
+      break;
+    case 2:
+    /*---------------------------------------------------------------------------*/
+    /*                         RED SIDE (Protected)                              */
+    /*---------------------------------------------------------------------------*/   
+      protectedAuton(false);  
       break;
     case 5:
     /*---------------------------------------------------------------------------*/
     /*                         BLUE SIDE (Not Protected)                          */
     /*---------------------------------------------------------------------------*/   
-      //Same as case 1 but in the blue side 
-      SUCTION1.spin(forward,100,pct); //Start Intake
-      SUCTION2.spin(forward,100,pct);
-
-      driveAuton(1200,1200,30,2500); //Drive Forward set distance
-      wait(250,msec);
-      SUCTION1.stop(); //stop Intake
-      SUCTION2.stop();
-      driveAuton(-800,-800,45,1900); //Drive Back set distance
-      SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
-      SUCTION2.spin(reverse,75,pct);
-      wait(225,msec);
-      SUCTION1.stop();
-      SUCTION2.stop();
-      driveAuton(-560,560,75,1000);   //Only difference from case 1 is that turning is opposite 
-      wait(10,msec);
-      driveAuton(430,430,60,1400); //Drive Forward to Goal
-      trayUp();
-      driveAuton(75,75,25,1000); //Move forward
-      wait(20,msec);
-
-      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
-      SUCTION2.spin(forward,100,pct); 
-      driveAuton(-600,-600,50,3000); 
-
-      SUCTION1.stop();
-      SUCTION2.stop();
-      LF.stop();
-      LB.stop();
-      RB.stop();
-      RF.stop();
+      notProtectedAuton(true);
       break;
     case 6:
       /*---------------------------------------------------------------------------*/
       /*                         BlUE SIDE (Protected)                             */
       /*---------------------------------------------------------------------------*/  
-      SUCTION1.spin(forward,100,pct);
-      SUCTION2.spin(forward,100,pct);
-      driveAuton(650,650,40,4000); //480 without head since center of mass change for turning
-      wait(350,msec);
-      driveAuton(-270,270,50,1500); 
-      wait(100,msec);
-      driveAuton(1075,1075,35,3500);
-      wait(200,msec);
-      SUCTION1.spin(forward,20,pct);
-      SUCTION2.spin(forward,20,pct);
-      driveAuton(-1100,-1100, 75, 2500);
-      SUCTION1.stop();
-      SUCTION2.stop(); 
-      wait(100,msec);
-      SUCTION1.spin(reverse,75,pct); //Outake set time just enough so the block almost touches the ground
-      SUCTION2.spin(reverse,75,pct);
-      wait(350,msec);
-      SUCTION1.stop();
-      SUCTION2.stop();
-      driveAuton(-350,350,50, 2000); //360 without head since center of mass change for turning
-      driveAuton(200,200, 40, 2000);
-      trayUp();
-      driveAuton(75,75,25,2000);
-
-      SUCTION1.spin(forward,100,pct); //Spin to climb up the goal and move back
-      SUCTION2.spin(forward,100,pct); 
-      driveAuton(-600,-600,50,2000); 
-      SUCTION1.stop();
-      SUCTION2.stop();
-      LF.stop();
-      LB.stop();
-      RB.stop();
-      RF.stop();
+      protectedAuton(true);
       break;
- 
+  
  
   }
 }
