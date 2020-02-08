@@ -1,6 +1,6 @@
-# 30047G
+# 30047W
 
-The 30047G code for the Berkmar Vex team. It is developed and efficent for a simple stacker design. 
+The 30047W code for the Berkmar Vex team. It is developed and efficent for a simple stacker design. 
 
 ## Robot Configuration 
 ```c++
